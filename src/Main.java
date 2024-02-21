@@ -1,17 +1,42 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        // Press <no shortcut> or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+    private static String[] usernames = new String[]{
+            "joska123",
+            "admin"
+    };
+
+    private static String[] passwords = new String[]{
+            "asdasd",
+            "szupertitkosjelszo"
+    };
+
+    public static boolean login(String username, String password) {
+        for (int i = 0; i < usernames.length; i++) {
+            if (usernames[i].equals(username) && passwords[i].equals(password)) {
+                return true;
+            }
         }
+        return false;
+    }
+
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+
+        String usernameInput = scanner.nextLine();
+        String passwordInput = scanner.nextLine();
+
+        boolean validUser = login(usernameInput, passwordInput);
+
+        if (!validUser) {
+            System.out.println("Invalid username or password");
+            return;
+        }
+
+        System.out.println("Successfully logged in.");
     }
 }
