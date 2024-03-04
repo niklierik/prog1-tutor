@@ -3,40 +3,24 @@ import java.util.Scanner;
 public class Main {
 
 
-    private static String[] usernames = new String[]{
-            "joska123",
-            "admin"
-    };
-
-    private static String[] passwords = new String[]{
-            "asdasd",
-            "szupertitkosjelszo"
-    };
-
-    public static boolean login(String username, String password) {
-        for (int i = 0; i < usernames.length; i++) {
-            if (usernames[i].equals(username) && passwords[i].equals(password)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        User.users[0] = new User("joska", "fasz");
+        User.users[1] = new User("pista", "kurvaanyad");
+        User.users[2] = new User("peti", "asd");
 
 
         String usernameInput = scanner.nextLine();
         String passwordInput = scanner.nextLine();
 
-        boolean validUser = login(usernameInput, passwordInput);
+        User user = User.login(usernameInput, passwordInput);
 
-        if (!validUser) {
-            System.out.println("Invalid username or password");
+        if (user == null) {
+            System.out.println("anyád");
             return;
         }
 
-        System.out.println("Successfully logged in.");
+        System.out.println(user.getUsername());
     }
 }
